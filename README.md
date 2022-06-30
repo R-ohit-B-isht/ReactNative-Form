@@ -14,3 +14,7 @@ Install my-project with npm
 
 ```
     
+## Feedback
+
+If you have any feedback, please reach out to us at rbtunes0@gmail.com
+
