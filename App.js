@@ -231,7 +231,6 @@ paddingBottom:50
       <View
         style={{
           paddingHorizontal: 32,
-          marginBottom: 16,
           width: '100%',
           justifyContent: 'center',
           alignItems: 'center',
@@ -257,17 +256,17 @@ paddingBottom:50
         />
       </View>
 
-      <View style={{ flexDirection: 'row', marginBottom: 10, marginTop: 10 }}>
+      <View style={{ flexDirection: 'row', marginBottom: 20, marginTop: 20 ,borderWidth:.5,borderColor:'grey',borderRadius:10}}>
         <View
-          style={{ justifyContent: 'center', alignItems: 'center', right: 10 }}>
-          <Text style={{ color: '#223e4b', fontSize: 16 }}>Gender:</Text>
+          style={{ justifyContent: 'center', alignItems: 'center',paddingLeft:10 }}>
+          <Text style={{ color: '#223e4b', fontSize: 16 }}>Gender :</Text>
         </View>
 
         <View
           style={{
             justifyContent: 'center',
             alignItems: 'center',
-            height: 80,
+            height: 50,
             width: 150,
           }}>
           <RNPickerSelect
@@ -286,11 +285,12 @@ paddingBottom:50
                 fontSize: 16,
                 paddingHorizontal: 10,
                 paddingVertical: 8,
-                borderWidth: 0.5,
+                borderWidth: 2,
                 borderColor: 'purple',
                 borderRadius: 8,
                 color: 'black',
-                paddingRight: 30, // to ensure the text is never behind the icon
+                paddingRight: 30,
+                alignContent:'center' // to ensure the text is never behind the icon
               },
               inputWeb: {
                 fontSize: 16,
