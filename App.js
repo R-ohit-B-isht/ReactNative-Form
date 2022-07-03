@@ -1,45 +1,20 @@
 import React from 'react';
-import { Text, View, Picker, YellowBox, StyleSheet } from 'react-native';
+import { Text, View } from 'react-native';
 import RNPickerSelect from 'react-native-picker-select';
 import TextInput from './components/TextInput';
 import Button from './components/Button';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import * as db from './components/db';
-import  {collection,addDoc} from 'firebase/firestore'
 
-//import database from '@react-native-firebase/database';
-YellowBox.ignoreWarnings([
-  'Warning: isMounted(...) is deprecated',
-  'Module RCTImageLoader',
-]);
 
 export default function Login() {
 
 
-const initialValues= {
-        name: '',
-        number: '',
-        address: '',
-        city: '',
-        zip: '',
-        country: '',
-        gender: '',
-      };
-const saveTodo = (input) => {
-    const saveToFirebase = FireBase.firestore();
-    saveToFirebase.collection("React-form").add({
-      id: 1,
-      item: input,
-    });
-  };
+
 const  onSubmit= (values) => {
-    // let ref1 = firebase.database().ref().child('users').push()
-    // let key = ref1.key
-    // values.id = key
-    // ref1.set(values)
+
   };
-const renderError = (message) => <p className="help is-danger">{message}</p>;
+
 
 
   const phoneRegExp =
@@ -79,77 +54,14 @@ const renderError = (message) => <p className="help is-danger">{message}</p>;
       onSubmit={async (values, { resetForm }) => {
         await onSubmit(values);
 	console.log(values);
-
-/*
-addUser = (values)=> {
-  e.preventDefault();
-  db.settings({
-    timestampsInSnapshots: true
-  });
-  const userRef = db.collection(“React-form”).add({
-    	name: values.name,
-        number: values.number,
-        address: values.address,
-        city: values.city,
-        zip: values.zip,
-        country: values.country,
-        gender:values.gender,
-  });  
-  this.setState({
-    	name: "",
-        number: "",
-        address: "",
-        city: "",
-        zip:"",
-        country: "",
-        gender:"",
-  });
-};
-*/
-
-const sendToFirestore = async(values) => {
-      await addDoc( collection(db, "React-form"), {
-               name: values.name,
-        number: values.number,
-        address: values.address,
-        city: values.city,
-        zip: values.zip,
-        country: values.country,
-        gender:values.gender,
-  } )}
-sendToFirestore(values);
-
-/*
-	function writeData(values) {
-        Firebase.database().ref("User").set({
-            name: values.name,
-        number: values.number,
-        address: values.address,
-        city: values.city,
-        zip: values.zip,
-        country: values.country,
-        gender:values.gender,
-        });
-      }
-*/
-	/*let ref1 = firebase.database().ref().child('users').push()
-    	let key = ref1.key
-    	values.id = key
-    	ref1.set(values)*/
-	/*const saveTodo = (values) => {
-    const saveToFirebase = fireBase.firestore();
-    saveToFirebase.collection("React-form").add({
-      id: 1,
-      item: values,
-    });
-  };*/
-
         resetForm();
       }}
 
     >
      {({  handleChange, handleSubmit, handleBlur, values, errors, touched  }) => (
+      
     <View
+
       style={{
         flex: 1,
         backgroundColor: '#fff',
@@ -157,32 +69,20 @@ sendToFirestore(values);
         alignItems: 'center',
         justifyContent: 'center',
       }}>
-	<View  style={{
-        flex: 2,
-        backgroundColor: '#fff',
-        width: 480,
-        height: 100,
-        borderColor: '#e94832',
-        borderWidth: StyleSheet.hairlineWidth,
-        borderRadius: 70,
-        alignItems: 'center',
-        justifyContent: 'center',
-paddingHorizontal: 32,
-paddingVertical: 32,
-          marginBottom: 16,
-      }}>
+
       <Text style={{ 
 
 color: '#223e4b', 
-fontSize: 20, 
 marginBottom: 16 ,
 fontWeight: 'bold',
 fontFamily: undefined,
-fontSize: '50px',
+fontSize:50,
+paddingBottom:50
 
 }}>
         Form
       </Text>
+      
       <View
         style={{
           paddingHorizontal: 32,
@@ -196,8 +96,7 @@ fontSize: '50px',
           icon="man"
           placeholder="Name"
           autoCapitalize="none"
-          autoCompleteType="none"
-          keyboardType="name"
+          keyboardType="default"
           selectedValue={values.name}
 
           error={errors.name}
@@ -224,7 +123,7 @@ fontSize: '50px',
           style={{ height: 30 }}
           icon="mobile"
           placeholder="Phone number"
-          autoCompleteType="number"
+          autoCompleteType="tel"
           autoCapitalize="none"
           keyboardType="numeric"
           selectedValue={values.number}
@@ -254,7 +153,7 @@ fontSize: '50px',
           style={{ height: 30 }}
           icon="address"
           placeholder="address"
-          autoCompleteType="address"
+          autoCompleteType="street-address"
           autoCapitalize="none"
           keyboardAppearance="dark"
           selectedValue={values.address}
@@ -281,7 +180,7 @@ fontSize: '50px',
           style={{ height: 30 }}
           icon="circle"
           placeholder="City"
-          autoCompleteType="address"
+          autoCompleteType="street-address"
           autoCapitalize="none"
           keyboardAppearance="dark"
           selectedValue={values.city}
@@ -311,7 +210,7 @@ fontSize: '50px',
           style={{ height: 30 }}
           icon="code"
           placeholder="Zip-Code"
-          autoCompleteType="address"
+          autoCompleteType="postal-code"
           autoCapitalize="none"
           keyboardType="numeric"
           selectedValue={values.zip}
@@ -341,7 +240,7 @@ fontSize: '50px',
           style={{ height: 30 }}
           icon="flag"
           placeholder="Country"
-          autoCompleteType="address"
+          autoCompleteType="street-address"
           autoCapitalize="none"
           keyboardAppearance="dark"
           selectedValue={values.country}
@@ -358,7 +257,7 @@ fontSize: '50px',
         />
       </View>
 
-      <View style={{ flexDirection: 'row', marginBottom: 100, marginTop: 10 }}>
+      <View style={{ flexDirection: 'row', marginBottom: 10, marginTop: 10 }}>
         <View
           style={{ justifyContent: 'center', alignItems: 'center', right: 10 }}>
           <Text style={{ color: '#223e4b', fontSize: 16 }}>Gender:</Text>
@@ -425,7 +324,7 @@ fontSize: '50px',
 
       <Button label="Submit" onPress={handleSubmit} />
 </View>
-    </View>
+
       )}
 </Formik>
   );
