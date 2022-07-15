@@ -9,7 +9,7 @@ Install my-project with npm
 
 ```bash
   cd ReactNative-Form
-  npm install ReactNative-Form
+  npm install 
   npm start
 
 ```
